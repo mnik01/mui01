@@ -1,0 +1,50 @@
+{
+  "name": "mui01",
+  "version": "0.0.1",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,yml,yaml,json,graphql}\"",
+    "typecheck": "tsc --module esnext --noEmit",
+    "lint": "eslint --fix src/**/*.ts{,x}",
+    "test": "jest --watch",
+    "test:once": "jest",
+    "stylelint": "stylelint --config .stylelintrc.json src/**/*.scss",
+    "stylelint:fix": "stylelint --fix --config .stylelintrc.json src/**/*.scss"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run stylelint && npm run lint && npm run typecheck"
+    }
+  },
+  "keywords": [],
+  "author": "mnik01",
+  "license": "ISC",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run format",
+      "npm run stylelint:fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnik01/mui01"
+  }
+}
