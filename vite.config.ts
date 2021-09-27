@@ -12,6 +12,9 @@ import reactRefresh from "@vitejs/plugin-react-refresh";
 import path from "path";
 
 export default defineConfig({
+  esbuild: {
+    jsxInject: "import React from 'react'",
+  },
   plugins: [reactRefresh()],
   build: {
     lib: {
