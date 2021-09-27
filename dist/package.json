@@ -1,9 +1,9 @@
 {
   "name": "mui01",
-  "version": "0.0.8",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "version": "0.0.9",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "jsnext:main": "/index.es.js",
   "description": "Custom react UI kit",
   "scripts": {
     "dev": "vite",
