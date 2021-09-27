@@ -1,6 +1,6 @@
 {
   "name": "mui01",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "format": "prettier --write \"src/**/*.{ts,tsx,yml,yaml,json,graphql}\"",
+    "format": "prettie r --write \"src/**/*.{ts,tsx,yml,yaml,json,graphql}\"",
     "typecheck": "tsc --module esnext --noEmit",
     "lint": "eslint --fix src/**/*.ts{,x}",
     "test": "jest --watch",
