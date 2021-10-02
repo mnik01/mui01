@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           # Artifact name
-          name: Build ${{ steps.vars.outputs.sha_short }}
+          name: Build
           # A file, directory or wildcard pattern that describes what to upload
           path: ./dist
           if-no-files-found: error
@@ -63,7 +63,7 @@ jobs:
     steps:
       - name: Publish lib 
         run: |
-          echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_MUI_TOKEN }} >> .npmrc
+          npm set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_MUI_TOKEN }}
           npm publish dist
         env:
           NPM_MUI_TOKEN: ${{ secrets.NPM_MUI_TOKEN }}
