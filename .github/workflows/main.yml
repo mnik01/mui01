@@ -32,7 +32,7 @@ jobs:
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm
           cache: npm
           # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN
-          registry-url: //registry.npmjs.org/:_authToken=${{secrets.NPM_MUI_TOKEN}}
+          registry-url: https://registry.npmjs.org/:_authToken=${{secrets.NPM_MUI_TOKEN}}
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
           cache-dependency-path: package-lock.json
       
