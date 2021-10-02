@@ -19,7 +19,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -49,15 +48,18 @@ jobs:
           npm run build
           echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN} >> .npmrc
           cp package.json dist
-          
+          cp .npmrc dist
+  publish:
+    runs-on: ubuntu-latest
+    steps:
       - name: NPM publish lib 
         run: npm publish dist
       
-      - name: Upload a Build Artifact
+      - name: Upload a build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           # Artifact name
-          name: Final build
+          name: final build
           # A file, directory or wildcard pattern that describes what to upload
           path: ./dist
           if-no-files-found: error
