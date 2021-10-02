@@ -61,9 +61,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: NPM publish lib 
-        run: |
-          echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN} >> .npmrc
-          echo registry=https://registry.npmjs.org/ >> .npmrc
-          echo always-auth=true >> .npmrc
+      - name: Publish lib 
+      - run: |
           npm publish dist
+      - env:
+          NPM_MUI_TOKEN: ${{ secrets.NPM_MUI_TOKEN }}
