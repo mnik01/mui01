@@ -69,13 +69,13 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 16.10.0
           registry-url: https://registry.npmjs.org
+      - name: Get build
+        uses: actions/download-artifact@master
+        with:
+          name: Build
+          path: ./dist
       - name: 🚀 publish
-        run: |
-          ls
-          pwd
-          ls ../
-          echo ls
-#         run: npm publish ./dist --access public
+        run: npm publish ./dist --access public
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_MUI_TOKEN}}
 
