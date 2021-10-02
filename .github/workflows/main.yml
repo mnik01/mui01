@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish lib 
-      - run: |
+        run: |
           npm publish dist
-      - env:
+        env:
           NPM_MUI_TOKEN: ${{ secrets.NPM_MUI_TOKEN }}
