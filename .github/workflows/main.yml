@@ -57,13 +57,14 @@ jobs:
           retention-days: 3
           
   publish:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: NPM publish lib 
         run: |
-          echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN}
-          registry=https://registry.npmjs.org/
-          always-auth=true >> .npmrc
+          echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN} >> .npmrc
+          echo registry=https://registry.npmjs.org/ >> .npmrc
+          echo always-auth=true >> .npmrc
           cp package.json dist
           cp .npmrc dist
           npm publish dist
