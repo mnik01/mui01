@@ -64,13 +64,13 @@ jobs:
       - name: 📚 checkout
         uses: actions/checkout@v2.1.1
       - name: 🙌 node
-        uses: actions/setup-node@v1.4.2
+        uses: actions/setup-node@v2.4.1
         with:
-            node-version: 16.10.0
-            registry-url: https://registry.npmjs.org
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 16.10.0
+          registry-url: https://registry.npmjs.org
       - name: 🚀 publish
         run: npm publish ./dist --access public
-        working-directory: my-package
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_MUI_TOKEN}}
 
