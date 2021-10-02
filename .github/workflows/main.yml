@@ -46,15 +46,6 @@ jobs:
         run: |
           npm ci
           npm run build
-          echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN} >> .npmrc
-          cp package.json dist
-          cp .npmrc dist
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: NPM publish lib 
-        run: npm publish dist
-      
       - name: Upload a build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
@@ -64,3 +55,15 @@ jobs:
           path: ./dist
           if-no-files-found: error
           retention-days: 3
+          
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: NPM publish lib 
+        run: |
+          echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN}
+          registry=https://registry.npmjs.org/
+          always-auth=true >> .npmrc
+          cp package.json dist
+          cp .npmrc dist
+          npm publish dist
