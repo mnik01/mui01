@@ -56,10 +56,22 @@ jobs:
           path: ./dist
           if-no-files-found: error
           retention-days: 3
-      - name: Publish lib 
-        run: |
-          echo //registry.npmjs.org/:_authToken=${{secrets.NPM_MUI_TOKEN}} >> .npmrc
-          npm publish dist
-      
-        
+  release:
+    needs: build
+    name: 🚀 release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 checkout
+        uses: actions/checkout@v2.1.1
+      - name: 🙌 node
+        uses: actions/setup-node@v1.4.2
+        with:
+            node-version: 16.10.0
+            registry-url: https://registry.npmjs.org
+      - name: 🚀 publish
+        run: npm publish ./dist --access public
+        working-directory: my-package
+        env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_MUI_TOKEN}}
+
         
