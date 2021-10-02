@@ -65,6 +65,7 @@ jobs:
           echo //registry.npmjs.org/:_authToken=${NPM_MUI_TOKEN} >> .npmrc
           echo registry=https://registry.npmjs.org/ >> .npmrc
           echo always-auth=true >> .npmrc
+          ls
           cp package.json dist
           cp .npmrc dist
           npm publish dist
