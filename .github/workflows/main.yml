@@ -64,6 +64,7 @@ jobs:
       - name: Publish lib 
         run: |
           npm set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_MUI_TOKEN }}
-          npm publish dist
+          cd dist
+          npm publish
         env:
           NPM_MUI_TOKEN: ${{ secrets.NPM_MUI_TOKEN }}
