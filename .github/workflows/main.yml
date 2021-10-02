@@ -36,7 +36,9 @@ jobs:
           cache-dependency-path: package-lock.json
       
       - name: Build project
-        run: npm run build
+        run: |
+          npm ci
+          npm run build
       
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
